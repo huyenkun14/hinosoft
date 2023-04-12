@@ -1,0 +1,46 @@
+.register {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.register-inner {
+    margin: auto;
+}
+
+.register-logo {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+
+.register-logo img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.register-ip div{
+    margin-bottom: 10px;
+}
+
+.register-button {
+    margin-top: 30px;
+}
+
+
+
+.register-inner hr {
+    margin: 50px 0;
+}
+
+.no-register {
+    text-align: center;
+}
+
+.no-register span{
+    margin-left: 20px;
+    color: blue;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}

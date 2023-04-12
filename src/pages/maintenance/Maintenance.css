@@ -1,0 +1,47 @@
+
+.maintenance {
+    background-color: whitesmoke;
+    font-weight: 500;
+}
+
+.maintenance-title, 
+.maintenance-detail, 
+.maintenance-note, 
+.maintenance-history {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.maintenance-title {
+    text-align: center;
+}
+
+.maintenance-title h5 {
+    color: darkblue;
+}
+
+.maintenance-detail {
+    font-weight: 300;
+}
+
+.maintenance-detail button {
+    border-radius: 20px;
+    min-width: 140px;
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.note-title p, .history-title p {
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.history-date {
+    padding: 5px;
+    background-color: whitesmoke;
+    font-style: italic;
+    color: gray;
+}

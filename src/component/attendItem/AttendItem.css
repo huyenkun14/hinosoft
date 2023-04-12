@@ -1,0 +1,41 @@
+.attendItem {
+    text-align: center;
+    padding-top: 20px;
+    background-color: #fff;
+}
+
+.attendItem-inner {
+    position: relative;
+}
+
+.type-img {
+    background-color: crimson;
+    height: 60px;
+    width: 60px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.type-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.attend-arrow {
+    position: absolute;
+    left: 68%;
+    transform: translateX(-50%);
+    color: dodgerblue;
+}
+
+.attend-title {
+    padding: 3px 10px;
+    background-color: whitesmoke;
+    color: rgb(96, 96, 96);
+    border-radius: 5px;
+    font-style: italic;
+}
+
+.no-done {
+    color: red;
+}

@@ -1,0 +1,70 @@
+.login {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.login-inner {
+    margin: auto;
+}
+
+.login-logo {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+
+.login-logo img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.login-email{
+    margin-bottom: 10px;
+}
+
+.login-password {
+    margin-bottom: 30px;
+}
+
+.placeholder-contain {
+    position: relative;
+}
+
+.placeholder-icon {
+    color: gray;
+    position: absolute;
+    top: 14px;
+    left: 25px;
+    font-size: 14px;
+}
+
+.form-control {
+    /* border: none; */
+    border-radius: 20px;
+    padding: 8px 50px;
+
+}
+
+.login-inner hr {
+    margin: 50px 0;
+}
+
+.no-login {
+    text-align: center;
+}
+
+.no-login span{
+    margin-left: 20px;
+    color: blue;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+.error {
+    font-size: 14px;
+    font-style: italic;
+    color: gold;
+}

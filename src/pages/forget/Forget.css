@@ -1,0 +1,26 @@
+.forget {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.forget-inner {
+    margin: auto;
+    text-align: center;
+}
+
+.forget-logo {
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+
+.forget-logo img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.forget-email{
+    margin-bottom: 30px;
+}
+  
