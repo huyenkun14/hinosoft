@@ -1,12 +1,15 @@
 import React from 'react'
 import './Home.css'
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Header from '../../component/header/Header'
 import AttendItem from '../../component/attendItem/AttendItem'
+import QR from '../../component/scanQR/QR'
 
 const Home = () => {
   return (
     <div className='home'>
+    <div className=''></div>
+    <QR />
       <Header title='Trang chủ' />
       <div className='home-inner d-flex flex-wrap'>
         <div className='col-md-1 col-lg-1 col-xl-1'></div>
