@@ -1,11 +1,5 @@
 .attendance {
-    background-color: whitesmoke;
     min-height: 100vh;
-}
-
-.attendance h1 {
-    text-align: center;
-    margin: 20px 0 50px;
 }
 
 .attend-type h5 {
@@ -14,20 +8,26 @@
     text-align: center;
     padding: 30px 0;
     background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .attend-detail {
     padding: 20px;
     background-color: #fff;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .attend-calendar {
     margin: 20px;
 }
 
-/* .calendar {
-    display: none;
-} */
+.attend-calendar i {
+    font-size: 18px;
+    border: 1px solid gray;
+    padding: 5px;
+    cursor: pointer;
+}
 
 .attend-time input {
     margin-top: -3px;

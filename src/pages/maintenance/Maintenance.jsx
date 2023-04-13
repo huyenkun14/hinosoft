@@ -5,13 +5,11 @@ import React from 'react'
 const Maintenance = () => {
   return (
     <div className='maintenance'>
-      <Header />
+      <Header title='Bảo trì' />
       <div className='d-flex'>
-        <div className='col-1 col-sm-2 col-md-3 col-lg-3 col-xl-4'></div>
+        <div className='col-sm-2 col-md-2 col-lg-3 col-xl-3'></div>
+        <div className='col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6'>
 
-        <div className='maintenance-inner col-10 col-sm-8 col-md-6 col-lg-6 col-xl-4'>
-
-          <h1>Bảo trì</h1>
           <div className='maintenance-title'>
             <h5>Xe lu 10 tấn</h5>
             <p>Hướng dẫn sử dụng</p>
@@ -19,15 +17,15 @@ const Maintenance = () => {
           <div className='maintenance-detail'>
             <div className='attend-time mb-3 d-flex'>
               <label htmlFor='time'>Số giờ máy hôm nay: </label>
-              <input id='time' type='text' value={5}/>
+              <input id='time' type='text' value={5} />
             </div>
             <div className='attend-time mb-3 d-flex'>
               <label htmlFor='time'>Bảo trì lần cuối: </label>
-              <input id='time' type='text' value={'2021-04-05 09:45'}/>
+              <input id='time' type='text' value={'2021-04-05 09:45'} />
             </div>
             <div className='attend-time mb-3 d-flex'>
               <label htmlFor='time'>Số giờ cuối cùng: </label>
-              <input id='time' type='text' value={1000}/>
+              <input id='time' type='text' value={1000} />
             </div>
             <button className='btn btn-primary'>Bảo trì máy</button>
           </div>
@@ -67,8 +65,7 @@ const Maintenance = () => {
             </div>
           </div>
         </div>
-
-        <div className='col-1 col-sm-2 col-md-3 col-lg-3 col-xl-4'></div>
+        <div className='col-sm-2 col-md-2 col-lg-3 col-xl-3'></div>
       </div>
     </div>
   )

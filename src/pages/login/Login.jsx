@@ -21,7 +21,6 @@ const Login = () => {
   // const [errorMessages, setErrorMessages] = useState({})
   const [state, setState] = useState(initialState)
   const [userData, setData] = useState([])
-  let LoginApi = 'https://hinosoft.com/api/auth/get_tokens'
 
 
 
@@ -52,7 +51,7 @@ const Login = () => {
     // else setErrorMessages({ name: 'email_error', message: errors.email_error })
 
 
-    axios.post(LoginApi, { username: 'admin', password: 'admin', access_lifetime: 7200, refresh_lifetime: 7200 })
+    axios.post('https://hinosoft.com/api/auth/get_tokens?username=admin&password=admin&access_lifetime=7200&refresh_lifetime=7200')
       .then(function (response) {
         console.log(response.data)
         setData(response.data)
@@ -74,14 +73,14 @@ const Login = () => {
         <form onSubmit={handleSumbit}>
           <div className="login-ip d-flex flex-column flex-wrap">
             <div className='login-email placeholder-contain'>
-              <i class="placeholder-icon fa-solid fa-user"></i>
+              <i className ="placeholder-icon fa-solid fa-user"></i>
               <input className='form-control' type="text" name='email' placeholder='Số điện thoại/Email'
                 onChange={handleInputChange}
               />
               {/* {renderErrorMessage('email_error')} */}
             </div>
             <div className='login-password placeholder-contain'>
-              <i class="placeholder-icon fa-solid fa-lock"></i>
+              <i className="placeholder-icon fa-solid fa-lock"></i>
               <input className='form-control' type="password" name='password' placeholder={'Mật khẩu'}
                 onChange={handleInputChange}
               />

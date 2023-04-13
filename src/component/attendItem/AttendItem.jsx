@@ -9,8 +9,6 @@ const AttendItem = () => {
 
   return (
     <div className='attendItem d-flex justify-content-around'>
-      <div className='col-1 col-sm-1 col-md-3 col-lg-3 col-xl-3'></div>
-      <div className='attendItem-inner d-flex justify-content-around col-10 col-sm-10 col-md-6 col-lg-6 col-xl-6'>
 
         <div className='attend-type'>
           <p><b>Xe lu 10 tấn</b></p>
@@ -60,8 +58,7 @@ const AttendItem = () => {
             </div>
           }
         </div>
-      </div>
-      <div className='col-1 col-sm-1 col-md-3 col-lg-3 col-xl-3'></div>
+
     </div>
   )
 }

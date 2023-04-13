@@ -1,3 +1,90 @@
-ul {
-    padding-left: 0;
+.header {
+    margin: 50px 0 80px;
+    height: fit-content;
+    padding: 8px 0;
 }
+
+.header-title p {
+    font-weight: bold;
+    font-size: 25px;
+    margin: auto;
+
+}
+
+.header-title i, .header-title p {
+    text-align: center;
+    color: #fff;
+
+}
+
+.header-title i, .nav-icon {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.header-avt {
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: #fff 1px solid;
+}
+
+.user-img img, .header-avt img {
+    width: 100%;
+    height: 100%
+}
+
+.navbar {
+    background-color: whitesmoke;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding-bottom: 100px;
+}
+
+.nav-header {
+    width: 200%;
+    padding: 20px;
+}
+
+.user-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: crimson;
+    overflow: hidden;
+}
+
+.user-info {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.nav-items {
+    padding-left: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-items li {
+    background-color: #fff;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.nav-link {
+    color: #000;
+}
+
+.logout {
+    color: red;
+}
+
+.toggle {
+    display: none;
+}
+
+
