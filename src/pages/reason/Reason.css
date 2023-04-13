@@ -1,0 +1,30 @@
+.reason-title,
+.reason-input {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #fff;
+}
+.reason-title h5 {
+    color: #3b71ca;
+}
+.reason-time input {
+    border: none;
+}
+.reason-time input:focus {
+    outline: none;
+}
+.reason-input textarea {
+    border: none;
+    width: 100%;
+}
+.reason-input textarea:focus {
+    outline: none;
+}
+.btn-save {
+    display: flex;
+    /* align-items: center; */
+    margin: 0 auto;
+    border-radius: 15px;
+}

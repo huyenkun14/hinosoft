@@ -1,7 +1,6 @@
-
-.maintenance-title, 
-.maintenance-detail, 
-.maintenance-note, 
+.maintenance-title,
+.maintenance-detail,
+.maintenance-note,
 .maintenance-history {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 20px;
@@ -15,7 +14,18 @@
 }
 
 .maintenance-title h5 {
-    color: darkblue;
+    color: #3b71ca;
+}
+.maintenance-title-desc {
+    font-style: italic;
+    color: #000;
+}
+
+.maintenance-title-icon i {
+    font-size: 25px;
+    margin-bottom: none;
+    margin-right: 5px;
+    color: #f5d505;
 }
 
 .maintenance-detail {
@@ -30,7 +40,8 @@
     transform: translateX(-50%);
 }
 
-.note-title p, .history-title p {
+.note-title p,
+.history-title p {
     margin-left: 10px;
     text-transform: uppercase;
 }
@@ -40,4 +51,14 @@
     background-color: whitesmoke;
     font-style: italic;
     color: gray;
+}
+.toggler {
+    display: none;
+}
+.active {
+    transform: rotate(180deg);
+}
+.history-icon i:hover,
+.note-icon i:hover {
+    cursor: pointer;
 }
