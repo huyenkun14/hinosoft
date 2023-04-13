@@ -5,11 +5,10 @@ import React from 'react'
 const Maintenance = () => {
   return (
     <div className='maintenance'>
-      <Header title='Bảo trì' />
       <div className='d-flex'>
         <div className='col-sm-2 col-md-2 col-lg-3 col-xl-3'></div>
         <div className='col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6'>
-
+          <Header title='Bảo trì' />
           <div className='maintenance-title'>
             <h5>Xe lu 10 tấn</h5>
             <p>Hướng dẫn sử dụng</p>

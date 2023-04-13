@@ -18,11 +18,10 @@ const Attendance = () => {
 
 
     <div className='attendance'>
-      <Header title='Điểm danh' />
       <div className='d-flex'>
         <div className='col-sm-2 col-md-2 col-lg-3 col-xl-3'></div>
         <div className='col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6'>
-
+          <Header title='Điểm danh' />
           <div className='attend-type'>
             <h5>Xe lu 10 tấn - MAY10T</h5>
           </div>
