@@ -1,19 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Home.css'
-import { Link } from 'react-router-dom'
-import QR from '../../component/scanQR/QR'
+import { Link, Outlet } from 'react-router-dom'
 import Header from '../../component/header/Header'
 import AttendItem from '../../component/attendItem/AttendItem'
 
 const Home = () => {
-
-  const [attend, setAttend] = useState(false)
-
   return (
     <div className='home'>
-      <div className={attend ? attend : 'toggle'}>
-        <QR />
-      </div>
       <Header title='Trang chủ' />
       <div className='home-inner d-flex flex-wrap'>
         <div className='col-md-1 col-lg-1 col-xl-1'></div>
@@ -41,16 +34,12 @@ const Home = () => {
           </div>
 
           <div className="home-button d-flex justify-content-center">
-            <button className='btn btn-primary'
-              onClick={() => setAttend(!attend)}
-            >Điểm danh</button>
-            <button className='btn btn-secondary'
-              onClick={() => setAttend(!attend)}
-            >Bảo trì máy</button>
+            <Link to='/attendance'><button className='btn btn-primary'>Điểm danh</button></Link>
+            <Link to='/maintenance'><button className='btn btn-secondary'>Bảo trì máy</button></Link>
           </div>
-
         </div>
         <div className='col-md-1 col-lg-2 col-xl-2'></div>
+
       </div>
     </div>
   )
