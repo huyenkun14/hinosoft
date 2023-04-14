@@ -1,8 +1,29 @@
 import Header from "../../component/header/Header";
 import "./Reason.css";
-import React from "react";
+import React, { useState } from "react";
 
 const Reason = () => {
+    const [imageSrcList, setImageSrcList] = useState([]);
+
+    const handleImageChange = (event) => {
+        const selectedFiles = event.target.files;
+
+        const fileReaderList = [];
+        for (let i = 0; i < selectedFiles.length; i++) {
+            const fileReader = new FileReader();
+            fileReader.onload = () => {
+                setImageSrcList((prevList) => [...prevList, fileReader.result]);
+            };
+            fileReader.readAsDataURL(selectedFiles[i]);
+            fileReaderList.push(fileReader);
+        }
+    };
+
+    const handleRemoveImage = (indexToRemove) => {
+        setImageSrcList((prevList) =>
+            prevList.filter((_, index) => index !== indexToRemove)
+        );
+    };
     return (
         <div className="reason">
             <Header title="Lí do bảo trì xe" />
@@ -27,6 +48,34 @@ const Reason = () => {
                             rows="10"
                             placeholder="Nhập"
                         ></textarea>
+                    </div>
+                    <div className="reason-input-img">
+                        <input
+                            type="file"
+                            multiple
+                            onChange={handleImageChange}
+                        />
+                        <div className="input-img-group">
+                            {imageSrcList.map((imageSrc, index) => (
+                                <div className="img-slide ">
+                                    <div className="input-image " key={index}>
+                                        <img
+                                            className="input_img"
+                                            src={imageSrc}
+                                            alt={`Selected ${index}`}
+                                        />
+                                        <button
+                                            className="btn-delete"
+                                            onClick={() =>
+                                                handleRemoveImage(index)
+                                            }
+                                        >
+                                            X
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     <div className="reason-save d-flex">
                         <button className="btn btn-primary btn-save">
