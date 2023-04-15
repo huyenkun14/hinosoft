@@ -5,9 +5,10 @@ import './QR.css';
 import Html5QrcodePlugin from './Html5QrcodePlugin.jsx';
 import ResultContainerPlugin from './ResultContainerPlugin.jsx';
 
-const QR = () => {
+const QR = (props) => {
     const [decodedResults, setDecodedResults] = useState([]);
-    const onNewScanResult = (decodedResult) => {
+    const onNewScanResult = (decodedText, decodedResult) => {
+
         console.log("QR [result]", decodedResult);
         // @ts-ignore
         setDecodedResults(prev => [...prev, decodedResult]);
@@ -32,4 +33,6 @@ const QR = () => {
     );
 };
 
+
 export default QR;
+

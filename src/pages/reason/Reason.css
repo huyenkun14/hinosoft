@@ -1,5 +1,6 @@
 .reason-title,
-.reason-input {
+.reason-input,
+.reason-input-img {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 20px;
     margin-bottom: 10px;
@@ -27,4 +28,35 @@
     /* align-items: center; */
     margin: 0 auto;
     border-radius: 15px;
+}
+.input_img {
+    margin-top: 10px 10px 0 0;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.input-image {
+    display: inline;
+    position: relative;
+    margin: 0 10px;
+    top: 0;
+}
+.input-image button {
+    position: absolute;
+    left: 75px;
+    top: -35px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.img-slide {
+}
+.input-img-group {
+    display: flex;
+    overflow-x: auto;
+}
+.reason-input-img input {
+    color: transparent;
+    margin-bottom: 10px;
 }

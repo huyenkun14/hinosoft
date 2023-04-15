@@ -2,11 +2,13 @@ import AttendItem from "../../component/attendItem/AttendItem";
 import Header from "../../component/header/Header";
 import "./Attendance-detail.css";
 import React from "react";
+
 import { fetchLogin, getListLogin} from "../../service/apiService";
 import accessToken from "../../service/apiService";
 import axios from "axios"
 const AttendanceDetail = () => {
     
+
   return (
     <div className="detail">
       <Header title="Chi tiết điểm danh" />
@@ -39,4 +41,6 @@ const AttendanceDetail = () => {
     </div>
   );
 };
+
 export default AttendanceDetail ;
+
