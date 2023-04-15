@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import './Login.css'
 import PageNotFound from '../../component/pageNotFound/PageNotFound'
 import { Link } from 'react-router-dom'
 import Home from '../home/Home'
+import { fetchLogin, getUserInfo } from '../../service/apiService'
+import { useNavigate } from 'react-router-dom'
+export const client = axios.create({
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://hinosoft.com/api',
+});
 
+export const UserContext = createContext()
 const Login = () => {
-
+  const navigate = useNavigate()
   const initialState = {
     email: '',
     password: ''
@@ -20,7 +26,7 @@ const Login = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // const [errorMessages, setErrorMessages] = useState({})
   const [state, setState] = useState(initialState)
-  const [userData, setData] = useState([])
+  const [userData, setData] = useState({})
 
 
 
@@ -57,7 +63,28 @@ const Login = () => {
         setData(response.data)
       })
       .catch(error => <PageNotFound />)
-
+    const username = document.querySelector('#username').value
+    const password = document.querySelector('#password').value
+    const params = `/auth/get_tokens?username=${username}&password=${password}&access_lifetime=7200&refresh_lifetime=7200`
+    return client
+    .get(params)
+    .then(res => {
+    if(res.data.data.access_token) {
+      
+        console.log(res.data.data.access_token)
+        localStorage.setItem("accessToken", res.data.data.access_token);
+        getUserInfo().then(res => {
+          console.log(res.data.data.name)
+          setData(res.data.data)
+        })
+        setIsSubmitted(true)
+    }
+    else {
+        alert("Login fail")
+    }
+    })
+    
+    
   }
 
 
@@ -74,14 +101,14 @@ const Login = () => {
           <div className="login-ip d-flex flex-column flex-wrap">
             <div className='login-email placeholder-contain'>
               <i className ="placeholder-icon fa-solid fa-user"></i>
-              <input className='form-control' type="text" name='email' placeholder='Số điện thoại/Email'
+              <input className='form-control' type="text" name='email' placeholder='Số điện thoại/Email' id='username'
                 onChange={handleInputChange}
               />
               {/* {renderErrorMessage('email_error')} */}
             </div>
             <div className='login-password placeholder-contain'>
               <i className="placeholder-icon fa-solid fa-lock"></i>
-              <input className='form-control' type="password" name='password' placeholder={'Mật khẩu'}
+              <input className='form-control' type="password" name='password' placeholder={'Mật khẩu'} id='password'
                 onChange={handleInputChange}
               />
               {/* {renderErrorMessage('pass_error')} */}
@@ -113,9 +140,9 @@ const Login = () => {
   )
 
   return (
-    <div>
-      {isSubmitted ? <Home /> : renderForm}
-    </div>
+      <div>
+        {isSubmitted ? navigate('/') : renderForm}
+      </div>
   )
 }
 export default Login

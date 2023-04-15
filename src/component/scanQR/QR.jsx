@@ -8,6 +8,7 @@ import ResultContainerPlugin from './ResultContainerPlugin.jsx';
 const QR = (props) => {
     const [decodedResults, setDecodedResults] = useState([]);
     const onNewScanResult = (decodedText, decodedResult) => {
+
         console.log("QR [result]", decodedResult);
         // @ts-ignore
         setDecodedResults(prev => [...prev, decodedResult]);
@@ -32,4 +33,6 @@ const QR = (props) => {
     );
 };
 
+
 export default QR;
+

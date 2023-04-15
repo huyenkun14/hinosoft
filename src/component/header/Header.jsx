@@ -1,10 +1,11 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-
+import { useContext } from "react";
+import { UserContext } from "../../pages/login/Login";
 const Header = (props) => {
+    // const userData = useContext(UserContext)
     const [toggle, setToggle] = useState(false);
-
     return (
         <div className="header bg-primary">
             <div className="d-flex justify-content-evenly header-title align-items-center">
@@ -43,6 +44,7 @@ const Header = (props) => {
                             <div className="user-info">
                                 <span>
                                     <b>John Wick</b>
+                                    {/* <b>{userData.name}</b> */}
                                 </span>
                                 <p>Lái xe</p>
                             </div>
