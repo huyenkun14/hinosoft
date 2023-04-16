@@ -13,7 +13,7 @@ const AttendItem = () => {
         <div className='attend-type'>
           <p><b>Xe lu 10 tấn</b></p>
           <div className='type-img'>
-            <img src='' alt='' />
+            <img src='https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/address-icon.png' alt='' />
           </div>
         </div>
 

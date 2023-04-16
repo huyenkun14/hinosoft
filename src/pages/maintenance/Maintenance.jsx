@@ -9,11 +9,11 @@ const Maintenance = () => {
     const [displayHistory, setDisplayHistory] = useState(false);
     return (
         <div className="maintenance">
-            <Header title="Bảo trì" />
             <div className="d-flex">
-                <div className="col-sm-2 col-md-2 col-lg-3 col-xl-3"></div>
-                <div className="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                    <div className="maintenance-title">
+                <div className="col-md-2 col-lg-3 col-xl-3"></div>
+                <div className="col-12 col-md-8 col-lg-6 col-xl-6">
+                    <Header title="Bảo trì" />
+                    <div className="themes maintenance-title">
                         <h5>Xe lu 10 tấn</h5>
                         <Link to="/guide">
                             <div className="maintenance-title-icon d-flex justify-content-center align-items-center">
@@ -48,18 +48,15 @@ const Maintenance = () => {
                             </button>
                         </Link>
                     </div>
-                    <div className="maintenance-note">
+                    <div className="maintenance-note" onClick={() => setDisplayNote(!displayNote)}>
                         <div className="maintenance-display d-flex justify-content-between">
                             <i class="fa-regular fa-note-sticky"></i>
-                            <div className="note-title d-flex">
+                            <div className="note-title d-flex text-info">
                                 <p>Ghi Chú</p>
                             </div>
                             <div className="note-icon">
                                 <i
-                                    class={`fa-solid fa-circle-chevron-down ${
-                                        displayNote ? "active" : ""
-                                    }`}
-                                    onClick={() => setDisplayNote(!displayNote)}
+                                    class={`fa-solid fa-circle-chevron-down ${displayNote ? "active" : ""}`}
                                 ></i>
                             </div>
                         </div>
@@ -67,20 +64,17 @@ const Maintenance = () => {
                             <p>Ghi chú cho lái xe</p>
                         </div>
                     </div>
-                    <div className="maintenance-history">
+                    <div className="maintenance-history" onClick={() =>
+                        setDisplayHistory(!displayHistory)
+                    }>
                         <div className="maintenance-display d-flex justify-content-between">
-                            <div className="history-title d-flex">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <div className="history-title d-flex text-info">
                                 <p>lịch sử bảo trì</p>
                             </div>
                             <div className="history-icon">
                                 <i
-                                    class={`fa-solid fa-circle-chevron-down ${
-                                        displayHistory ? "active" : ""
-                                    }`}
-                                    onClick={() =>
-                                        setDisplayHistory(!displayHistory)
-                                    }
+                                    class={`fa-solid fa-circle-chevron-down ${displayHistory ? "active" : ""}`}
                                 ></i>
                             </div>
                         </div>
@@ -112,7 +106,7 @@ const Maintenance = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-2 col-md-2 col-lg-3 col-xl-3"></div>
+                <div className="col-md-2 col-lg-3 col-xl-3"></div>
             </div>
         </div>
     );

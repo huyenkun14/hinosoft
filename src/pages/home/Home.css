@@ -1,7 +1,11 @@
+.home-account {
+    padding: 20px 0;
+}
 
 .account-avt {
     width: 120px;
     height: 120px;
+    border: 2px #fff solid;
     border-radius: 50%;
     background-color: crimson;
     overflow: hidden;
@@ -19,7 +23,6 @@
 
 .account-info h4 {
     margin-top: 10px;
-    color: rgb(22, 88, 155);
 }
 
 .account-info p {
@@ -32,7 +35,7 @@
 }
 
 .home-attend {
-    margin: 10px 0;
+    /* margin-top: -20px; */
 }
 
 .home-button {
@@ -43,4 +46,30 @@
     border-radius: 20px;
     margin: 0 5px;
     min-width: 150px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .home-attend {
+        margin-top: -20px;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .home-attend {
+        margin-top: 50px;
+    }
+
+    .home-account {
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .account-detail {
+        margin-top: 20px;
+    }
+
 }
