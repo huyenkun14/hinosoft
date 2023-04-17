@@ -2,16 +2,17 @@ import './AttendItem.css'
 
 import React from 'react'
 
-const AttendItem = () => {
+const AttendItemTestApi = (props) => {
 
   let isStart = true
   let isFinish = false
-
+  const {history} = props
+  console.log(history)
   return (
     <div className='attendItem d-flex justify-content-around'>
 
         <div className='attend-type'>
-          <p ><b>Xe lu 10 tấn</b></p>
+          <p ><b>{history ? history.equipment_id.name : "Xe lu 10 tấn"}</b></p>
           <div className='type-img'>
             <img src='https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/address-icon.png' alt='' />
           </div>
@@ -63,4 +64,4 @@ const AttendItem = () => {
   )
 }
 
-export default AttendItem
+export default AttendItemTestApi

@@ -5,14 +5,16 @@ import Header from '../../component/header/Header'
 import AttendItem from '../../component/attendItem/AttendItem'
 import axios from 'axios'
 import { useContext } from 'react'
-import { UserContext } from '../login/Login'
+import { AuthContext } from '../../service/AuthProvider'
+// import { useAuth } from '../../service/useAuth'
 export const client = axios.create({
   baseURL: 'https://cors-anywhere.herokuapp.com/https://hinosoft.com/api',
 });
-const Home = () => {
 
-  const userData = useContext(UserContext)
-  console.log(userData)
+const Home = (props) => {
+  const {userInfo} = useContext(AuthContext)
+  console.log(userInfo)
+
   return (
     <div className='home'>
       <div className='d-flex flex-wrap'>
@@ -29,7 +31,9 @@ const Home = () => {
               <img src='https://img.lovepik.com/free-png/20211204/lovepik-cartoon-avatar-png-image_401302777_wh1200.png' alt='' />
             </div>
             <div className='account-info'>
-              <h4>John Wick</h4>
+              {/* <h4>John Wick</h4> */}
+              {/* <h4>{userInfo.name}</h4> */}
+              <h4>{userInfo ? userInfo.name : "John Wick"}</h4>
               <p>Lái xe</p>
             </div>
             <div className='account-contact'>
