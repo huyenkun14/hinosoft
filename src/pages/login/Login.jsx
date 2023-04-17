@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import './Login.css'
-import PageNotFound from '../../component/pageNotFound/PageNotFound'
+import PageNotFound from '../pageNotFound/PageNotFound'
 import { Link } from 'react-router-dom'
 import { fetchLogin, getUserInfo } from '../../service/apiService'
 import { useNavigate } from 'react-router-dom'
@@ -62,7 +62,7 @@ const Login = () => {
         console.log(response.data)
         setData(response.data)
       })
-      .catch(error => <PageNotFound />)
+      .catch(error => navigate('/pageNotFound'))
     const username = document.querySelector('#username').value
     const password = document.querySelector('#password').value
     const params = `/auth/get_tokens?username=${username}&password=${password}&access_lifetime=7200&refresh_lifetime=7200`

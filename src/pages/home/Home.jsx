@@ -9,7 +9,7 @@ import { UserContext } from '../login/Login'
 export const client = axios.create({
   baseURL: 'https://cors-anywhere.herokuapp.com/https://hinosoft.com/api',
 });
-const Home = (props) => {
+const Home = () => {
 
   const userData = useContext(UserContext)
   console.log(userData)
