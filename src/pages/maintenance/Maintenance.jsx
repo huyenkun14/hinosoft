@@ -42,7 +42,7 @@ const Maintenance = () => {
                             <label htmlFor="time">Số giờ cuối cùng: </label>
                             <input id="time" type="text" value={1000} />
                         </div>
-                        <Link to="/reason">
+                        <Link to="reason">
                             <button className="btn btn-primary">
                                 Bảo trì máy
                             </button>

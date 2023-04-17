@@ -28,6 +28,10 @@
     color: #f5d505;
 }
 
+.maintenance-title-icon p {
+    color: #fff;
+}
+
 .maintenance-detail {
     font-weight: 300;
     margin-top: -15px;

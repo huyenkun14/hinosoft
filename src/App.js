@@ -12,6 +12,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Forget from './pages/forget/Forget';
 import Guide from './pages/guide/Guide'
 import QR from './pages/scanQR/QR';
+import Reason from './pages/reason/Reason';
+
 import { AuthProvider } from './service/AuthProvider';
 function App() {
   return (
@@ -30,10 +32,12 @@ function App() {
             <Route path='attendance_detail' element={<AttendanceDetail />} />
             <Route path='maintenance' element={<Maintenance />} />
             <Route path='guide' element={<Guide />} />
+            <Route path='reason' element={<Reason />} />
           </Routes>
         </BrowserRouter>
       </div>
     </AuthProvider>
+
   );
 }
 
