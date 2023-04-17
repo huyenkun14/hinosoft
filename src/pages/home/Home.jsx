@@ -10,9 +10,11 @@ import { AuthContext } from '../../service/AuthProvider'
 export const client = axios.create({
   baseURL: 'https://cors-anywhere.herokuapp.com/https://hinosoft.com/api',
 });
+
 const Home = (props) => {
   const {userInfo} = useContext(AuthContext)
   console.log(userInfo)
+
   return (
     <div className='home'>
       <div className='d-flex flex-wrap'>

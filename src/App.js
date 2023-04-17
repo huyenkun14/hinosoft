@@ -12,7 +12,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Forget from './pages/forget/Forget';
 import Guide from './pages/guide/Guide'
 import QR from './pages/scanQR/QR';
-import Reason from './pages/reason/Reason';
+import Reason from './pages/reason/Reason'
+import PageNotFound from './pages/pageNotFound/PageNotFound';
 
 import { AuthProvider } from './service/AuthProvider';
 function App() {
@@ -33,11 +34,11 @@ function App() {
             <Route path='maintenance' element={<Maintenance />} />
             <Route path='guide' element={<Guide />} />
             <Route path='reason' element={<Reason />} />
+            <Route path='pagenotfound' element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
       </div>
     </AuthProvider>
-
   );
 }
 
