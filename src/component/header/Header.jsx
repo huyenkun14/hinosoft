@@ -11,17 +11,17 @@ const Header = (props) => {
     return (
         <div className="header">
             <div className="d-flex justify-content-evenly header-title align-items-center">
-                <div className="col-4">
+                <div className="col-2">
                     <p><i
                         class="fa-solid fa-bars"
                         onClick={() => setToggle(!toggle)}
                     ></i></p>
 
                 </div>
-                <div className="col-4">
+                <div className="col-8">
                     <p>{props.title}</p>
                 </div>
-                <div className="col-4">
+                <div className="col-2">
                     <div className="header-avt mx-auto">
                         <img
                             src="https://img.lovepik.com/free-png/20211204/lovepik-cartoon-avatar-png-image_401302777_wh1200.png"
