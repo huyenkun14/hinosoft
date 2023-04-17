@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import './Login.css'
 import PageNotFound from '../../component/pageNotFound/PageNotFound'
@@ -6,12 +6,17 @@ import { Link } from 'react-router-dom'
 import Home from '../home/Home'
 import { fetchLogin, getUserInfo } from '../../service/apiService'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../service/AuthProvider'
+// import { useAuth } from '../../service/useAuth'
+
 export const client = axios.create({
   baseURL: 'https://cors-anywhere.herokuapp.com/https://hinosoft.com/api',
 });
 
 export const UserContext = createContext()
 const Login = () => {
+  // const {login, user} = useAuth()
+  const {login, userInfo } = useContext(AuthContext)
   const navigate = useNavigate()
   const initialState = {
     email: '',
@@ -57,34 +62,40 @@ const Login = () => {
     // else setErrorMessages({ name: 'email_error', message: errors.email_error })
 
 
-    axios.post('https://hinosoft.com/api/auth/get_tokens?username=admin&password=admin&access_lifetime=7200&refresh_lifetime=7200')
-      .then(function (response) {
-        console.log(response.data)
-        setData(response.data)
-      })
-      .catch(error => <PageNotFound />)
-    const username = document.querySelector('#username').value
-    const password = document.querySelector('#password').value
-    const params = `/auth/get_tokens?username=${username}&password=${password}&access_lifetime=7200&refresh_lifetime=7200`
-    return client
-    .get(params)
-    .then(res => {
-    if(res.data.data.access_token) {
+    // axios.post('https://hinosoft.com/api/auth/get_tokens?username=admin&password=admin&access_lifetime=7200&refresh_lifetime=7200')
+    //   .then(function (response) {
+    //     console.log(response.data)
+    //     setData(response.data)
+    //   })
+    //   .catch(error => <PageNotFound />)
+
+
+
+
+    // const username = document.querySelector('#username').value
+    // const password = document.querySelector('#password').value
+    // const params = `/auth/get_tokens?username=${username}&password=${password}&access_lifetime=7200&refresh_lifetime=7200`
+    // return client
+    // .get(params)
+    // .then(res => {
+    // if(res.data.data.access_token) {
       
-        console.log(res.data.data.access_token)
-        localStorage.setItem("accessToken", res.data.data.access_token);
-        getUserInfo().then(res => {
-          console.log(res.data.data.name)
-          setData(res.data.data)
-        })
-        setIsSubmitted(true)
+    //     console.log(res.data.data.access_token)
+    //     localStorage.setItem("accessToken", res.data.data.access_token);
+    //     getUserInfo().then(res => {
+    //       console.log(res.data.data.name)
+    //       setData(res.data.data)
+    //     })
+    //     setIsSubmitted(true)
+    // }
+    // else {
+    //     alert("Login fail")
+    // }
+    // })
+    login()
+    if(localStorage.getItem("accessToken")) {
+      setIsSubmitted(true)
     }
-    else {
-        alert("Login fail")
-    }
-    })
-    
-    
   }
 
 

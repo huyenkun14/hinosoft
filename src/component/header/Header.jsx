@@ -2,12 +2,17 @@ import "./Header.css";
 import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useContext } from "react";
-import { UserContext } from "../../pages/login/Login";
+import { AuthContext } from "../../service/AuthProvider";
 const Header = (props) => {
     // const userData = useContext(UserContext)
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()
-
+    const {userInfo} = useContext(AuthContext)
+    // console.log(userInfo)
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken")
+        navigate("/login")
+    }
     return (
         <div className="header">
             <div className="d-flex justify-content-evenly header-title align-items-center">
@@ -45,7 +50,9 @@ const Header = (props) => {
                             </div>
                             <div className="user-info" style={{color: 'black'}}>
                                 <span>
-                                    <b>John Wick</b>
+                                    {/* <b>John Wick</b> */}
+                                    <b>{userInfo ? userInfo.name : "John Wick"}</b>
+
                                     {/* <b>{userData.name}</b> */}
                                 </span>
                                 <p>Lái xe</p>
@@ -92,7 +99,9 @@ const Header = (props) => {
                             Lịch sử điểm danh
                             <i class="fa-solid fa-chevron-right"></i>
                         </li>
-                        <li className="logout">Đăng xuất</li>
+                        <li className="logout" onClick={handleLogout}>
+                            Đăng xuất
+                        </li>
                     </ul>
                 </div>
             </div>
