@@ -23,14 +23,19 @@ const AttendItemTestApi = (props) => {
           {
             isStart ? <div className='done'>
               <div className='start-time'>
-                <span>2021-08-02</span>
-                <p>09:30:00</p>
+                {/* <span>2021-08-02</span>
+                <p>09:30:00</p> */}
+                <span>{history ? history.start_date : "2021-08-02"}</span>
+                
               </div>
+              <p></p>
               <p><b>1200 giờ</b></p>
             </div> : <div className='no-done'>
               <div className='start-time'>
-                <span>2021-08-02</span>
-                <p>09:30:00</p>
+                {/* <span>2021-08-02</span>
+                <p>09:30:00</p> */}
+                  <span>{history ? history.end_date : "2021-08-02"}</span>
+
               </div>
               <p><b>---</b></p>
             </div>

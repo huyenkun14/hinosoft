@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 export const client = axios.create({
@@ -23,22 +22,44 @@ export const client = axios.create({
 //     })
 //  }
 //  console.log(accessToken)
- export const getUserInfo = () => {
-    let accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken)
-    const params = '/profile_info'
-    return client
-    .get(params
-        , {
-        headers: {
-            'Content-Type': 'application/json',
-            'access_token': accessToken
-        }
-    }
-    )
-    // .then(res => {
-    //     console.log(res.body)
-    // })
- }
+export const getUserInfo = () => {
+  let accessToken = localStorage.getItem("accessToken");
+  console.log(accessToken);
+  const params = "/profile_info";
+  return client.get(params, {
+    headers: {
+      "Content-Type": "application/json",
+      access_token: accessToken,
+    },
+  });
+  // .then(res => {
+  //     console.log(res.body)
+  // })
+};
+export const fetchAttendanceList = () => {
+  let accessToken = localStorage.getItem("accessToken");
+  console.log(accessToken);
+  const params = "/attendence";
+  return client.get(params, {
+    headers: {
+      "Content-Type": "application/json",
+      access_token: accessToken,
+    },
+  });
+};
 
- 
+export const fetchRegister = (data) => {
+    const {name, login, password} = data
+  let accessToken = localStorage.getItem("accessToken");
+  const params = "/res.users";
+  return client.post(
+    params,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        access_token: accessToken,
+      },
+    },
+    {name, login, password}
+  );
+};

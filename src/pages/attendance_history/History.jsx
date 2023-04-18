@@ -9,30 +9,21 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../service/AuthProvider";
 import { client } from '../home/Home'
 import AttendItemTestApi from '../../component/attendItem/AttendItemTestApi'
+import { fetchAttendanceList } from '../../service/apiService'
 const History = () => {
     const {userInfo} = useContext(AuthContext)
     const navigate = useNavigate();
     const [historyList, setHistoryList] = useState()
-    const fetchAttendanceList = () => {
-        let accessToken = localStorage.getItem("accessToken");
-        console.log(accessToken)
-        const params = '/attendence'
-        return client
-        .get(params, {
-            headers: {
-                'Content-Type': 'application/json',
-                'access_token': accessToken
-            }
-        }
-        )
+    useEffect(() => {
+        fetchAttendanceList()
         .then(res => {
             console.log(res.data.data.results)
             setHistoryList(res.data.data.results)
         })
-    }
-    useEffect(() => {
-        fetchAttendanceList()
     },[])
+    const GotoDetail = (detail) => {
+        navigate("/attendance_detail", {state: {detail}})
+    }
     return (
         <div className='history'>
             <div className='d-flex'>
@@ -45,7 +36,7 @@ const History = () => {
                         {
                             historyList 
                             ? historyList.map((result, index) => (
-                                <div className='history-item'>
+                                <div className='history-item' key={index} onClick={() => GotoDetail(result)}>
                             <AttendItemTestApi history = {result} />
                                 </div>
                             ))
