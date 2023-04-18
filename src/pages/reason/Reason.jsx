@@ -26,10 +26,10 @@ const Reason = () => {
     };
     return (
         <div className="reason">
-            <Header title="Lí do bảo trì xe" />
             <div className="d-flex">
                 <div className="col-sm-2 col-md-2 col-lg-3 col-xl-3"></div>
                 <div className="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
+                    <Header title="Lí do bảo trì xe" />
                     <div className="reason-title d-flex justify-content-between align-items-center">
                         <h5>Xe lu 10 tấn</h5>
                         <div className="reason-time d-flex justify-content-center align-items-center">
@@ -45,7 +45,7 @@ const Reason = () => {
                         <textarea
                             id=""
                             name=""
-                            rows="10"
+                            rows="6"
                             placeholder="Nhập"
                         ></textarea>
                     </div>
@@ -77,7 +77,7 @@ const Reason = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="reason-save d-flex">
+                    <div className="reason-save">
                         <button className="btn btn-primary btn-save">
                             Lưu
                         </button>

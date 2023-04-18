@@ -11,6 +11,7 @@ import AttendItemTestApi from "../../component/attendItem/AttendItemTestApi";
 export const client = axios.create({
   baseURL: "https://cors-anywhere.herokuapp.com/https://hinosoft.com/api",
 });
+
 const Home = (props) => {
   const { userInfo } = useContext(AuthContext);
   console.log(userInfo);

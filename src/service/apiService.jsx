@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const client = axios.create({
-  baseURL: "https://cors-anywhere.herokuapp.com/https://hinosoft.com/api",
-});
+    baseURL: 'https://hinosoft.com/api',
+  });
 
 // export const fetchLogin = () => {
 //     const username = document.querySelector('#username').value
