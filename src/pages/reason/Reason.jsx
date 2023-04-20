@@ -8,6 +8,15 @@ const Reason = () => {
     const handleImageChange = (event) => {
         const selectedFiles = event.target.files;
 
+        const maxFiles = 5;
+        const totalFiles = selectedFiles.length + imageSrcList.length;
+
+        if (totalFiles > maxFiles) {
+            alert(`Chỉ cho phép chọn tối đa ${maxFiles} file!`);
+            event.preventDefault();
+            return false;
+        }
+
         const fileReaderList = [];
         for (let i = 0; i < selectedFiles.length; i++) {
             const fileReader = new FileReader();
@@ -16,6 +25,7 @@ const Reason = () => {
             };
             fileReader.readAsDataURL(selectedFiles[i]);
             fileReaderList.push(fileReader);
+            // console.log(fileReaderList);
         }
     };
 
@@ -90,3 +100,102 @@ const Reason = () => {
 };
 
 export default Reason;
+
+//================================================CÓ CỐ GẮNG NHƯNG VẪN LỖI 429
+// import React, { useState } from "react";
+
+// const Reason = () => {
+//     const [file, setFile] = useState();
+//     const [imageUrl, setImageUrl] = useState("");
+
+//     const handleUpload = async (event) => {
+//         setFile({ file: event.target.files[0] });
+//         const formData = new FormData();
+//         formData.append("image", file);
+//         console.log(formData);
+//         try {
+//             const response = await fetch(
+//                 `https://api.imgur.com/3/image/`,
+//                 formData,
+//                 {
+//                     method: "POST",
+//                     body: formData,
+//                     headers: {
+//                         Authorization: "Client-ID 5c8d64a6fa66124",
+//                         Accept: "application/json",
+//                     },
+//                 }
+//             );
+
+//             const data = response.json();
+//             setImageUrl(data.link);
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     };
+
+//     return (
+//         <div>
+//             <input name="file" type="file" multiple onChange={handleUpload} />
+//             <img src={imageUrl} id="img" />
+//             <p id="url">{imageUrl}</p>
+//         </div>
+//     );
+// };
+
+// export default Reason;
+
+//==========THỬ ĐƯỢC RỒI MÀ THỬ LẠI LẠI LỖI=============
+// import React, { useState } from "react";
+
+// function Reason() {
+//     const [imageUrls, setImageUrls] = useState([]);
+//     const handleFileUpload = async (event) => {
+//         const files = event.target.files;
+
+//         const promises = [];
+
+//         for (let i = 0; i < files.length; i++) {
+//             const formData = new FormData();
+//             formData.append("image", files[i]);
+
+//             const promise = fetch(`https://api.imgur.com/3/image/`, {
+//                 method: "POST",
+//                 headers: {
+//                     Authorization: "Client-ID 5c8d64a6fa66124",
+//                     Accept: "application/json",
+//                 },
+//                 body: formData,
+//             })
+//                 .then((response) => response.json())
+//                 .then((data) => {
+//                     const imageUrl = data.data.link;
+//                     return imageUrl;
+//                 })
+
+//                 .catch((error) => console.error(error));
+
+//             promises.push(promise);
+//         }
+
+//         Promise.all(promises).then((imageUrls) => {
+//             setImageUrls(imageUrls);
+//             console.log(imageUrls);
+//         });
+//     };
+
+//     return (
+//         <div>
+//             <input type="file" multiple onChange={handleFileUpload} />
+//             <ul>
+//                 {imageUrls.map((imageUrl, index) => (
+//                     <li key={index}>
+//                         <img src={imageUrl} alt={`Image ${index + 1}`} />
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// }
+
+// export default Reason;
