@@ -6,7 +6,12 @@
     position: relative;
     border-radius: 10px;
 }
-
+/* .attendItem .attend-type {
+    max-width: 100px;
+}
+.attendItem .attend-start {
+    max-width: 100px;
+} */
 .type-img {
     height: 60px;
     width: 60px;

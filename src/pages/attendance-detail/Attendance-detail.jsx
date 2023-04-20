@@ -2,13 +2,12 @@ import AttendItem from "../../component/attendItem/AttendItem";
 import Header from "../../component/header/Header";
 import "./Attendance-detail.css";
 import React from "react";
-
-import { fetchLogin, getListLogin} from "../../service/apiService";
-import accessToken from "../../service/apiService";
-import axios from "axios"
+import AttendItemTestApi from "../../component/attendItem/AttendItemTestApi";
+import { useLocation } from "react-router-dom";
 const AttendanceDetail = () => {
-    
-
+  const location = useLocation();
+  const history = location ? location.state.detail : ""
+  console.log(history)
   return (
     <div className="detail">
       <Header title="Chi tiết điểm danh" />
@@ -17,14 +16,15 @@ const AttendanceDetail = () => {
         <div className="col-12 col-sm-8 col-md-8 col-lg-6 col-xl-6">
        
           <div className="history-inner">
-            <div className="history-item">
-              <AttendItem />
+            <div className="menu-item">
+              <AttendItemTestApi history={history} />
+              {/* <AttendItem /> */}
             </div>
             <hr/>
             <div className="attend-local" style={{marginLeft: 20}}>
                 <label>Vị trí: </label>
                 <select>
-                <option>Vị trí A</option>
+                <option>{history ? history.location_id.name : "Vi tri A"}</option>
                 </select>
             </div>
           </div>
