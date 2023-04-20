@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import "./App.css";
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
-import Attendance from "./pages/attendance/Attendance";
-import History from "./pages/attendance_history/History";
-import Maintenance from "./pages/maintenance/Maintenance";
-import AttendanceDetail from "./pages/attendance-detail/Attendance-detail";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Forget from "./pages/forget/Forget";
-import Guide from "./pages/guide/Guide";
-import Reason from "./pages/reason/Reason";
-import QR from "./pages/scanQR/QR";
-=======
 
 import React from 'react';
 import './App.css';
@@ -30,7 +14,7 @@ import Guide from './pages/guide/Guide'
 import QR from './pages/scanQR/QR';
 import Reason from './pages/reason/Reason'
 import PageNotFound from './pages/pageNotFound/PageNotFound';
->>>>>>> 124de42f7ed6bddb53a1146969677500d9338dd9
+
 
 import { AuthProvider } from './service/AuthProvider';
 function App() {
