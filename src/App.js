@@ -18,31 +18,7 @@ import PageNotFound from './pages/pageNotFound/PageNotFound';
 
 import { AuthProvider } from './service/AuthProvider';
 function App() {
-<<<<<<< HEAD
-    return (
-        <div className="app">
-            <div className="cover-bg"></div>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="forget" element={<Forget />} />
-                    <Route path="register" element={<Register />} />
-                    <Route path="scan" element={<QR />} />
-                    <Route path="attendance" element={<Attendance />} />
-                    <Route path="attendance_history" element={<History />} />
-                    <Route
-                        path="attendance_detail"
-                        element={<AttendanceDetail />}
-                    />
-                    <Route path="maintenance" element={<Maintenance />} />
-                    <Route path="reason" element={<Reason />} />
-                    <Route path="guide" element={<Guide />} />
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
-=======
+
   return (
     <AuthProvider>
       <div className='app'>
@@ -66,7 +42,6 @@ function App() {
       </div>
     </AuthProvider>
   );
->>>>>>> 124de42f7ed6bddb53a1146969677500d9338dd9
 }
 
 export default App;
