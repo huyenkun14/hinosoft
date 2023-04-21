@@ -5,6 +5,7 @@ import "./Maintenance.css";
 import React, { useState } from "react";
 
 const Maintenance = () => {
+
     const [displayNote, setDisplayNote] = useState(false);
     const [displayHistory, setDisplayHistory] = useState(false);
     return (
@@ -17,7 +18,7 @@ const Maintenance = () => {
                         <h5>Xe lu 10 tấn</h5>
                         <Link to="/guide">
                             <div className="maintenance-title-icon d-flex justify-content-center align-items-center">
-                                <i class="fa-solid fa-circle-info "></i>
+                                <i className="fa-solid fa-circle-info "></i>
 
                                 <p className="maintenance-title-desc mb-0">
                                     Hướng dẫn sử dụng
@@ -42,7 +43,7 @@ const Maintenance = () => {
                             <label htmlFor="time">Số giờ cuối cùng: </label>
                             <input id="time" type="text" value={1000} />
                         </div>
-                        <Link to="reason">
+                        <Link to="/reason">
                             <button className="btn btn-primary">
                                 Bảo trì máy
                             </button>
@@ -56,7 +57,7 @@ const Maintenance = () => {
                             </div>
                             <div className="note-icon">
                                 <i
-                                    class={`fa-solid fa-circle-chevron-down ${displayNote ? "active" : ""}`}
+                                    className={`fa-solid fa-circle-chevron-down ${displayNote ? "active" : ""}`}
                                 ></i>
                             </div>
                         </div>
@@ -68,13 +69,13 @@ const Maintenance = () => {
                         setDisplayHistory(!displayHistory)
                     }>
                         <div className="maintenance-display d-flex justify-content-between">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <i className="fa-solid fa-clock-rotate-left"></i>
                             <div className="history-title d-flex text-info">
                                 <p>lịch sử bảo trì</p>
                             </div>
                             <div className="history-icon">
                                 <i
-                                    class={`fa-solid fa-circle-chevron-down ${displayHistory ? "active" : ""}`}
+                                    className={`fa-solid fa-circle-chevron-down ${displayHistory ? "active" : ""}`}
                                 ></i>
                             </div>
                         </div>

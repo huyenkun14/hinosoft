@@ -1,16 +1,15 @@
 import "./Header.css";
 import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../service/AuthProvider";
+import { removeUserlocal } from "../../cookies/localStorage";
+
 const Header = (props) => {
-    // const userData = useContext(UserContext)
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()
-    const {userInfo} = useContext(AuthContext)
-    // console.log(userInfo)
+
+
     const handleLogout = () => {
-        localStorage.removeItem("accessToken")
+        localStorage.clear()
         navigate("/login")
     }
     return (
@@ -18,7 +17,7 @@ const Header = (props) => {
             <div className="d-flex justify-content-evenly header-title align-items-center">
                 <div className="col-2">
                     <p><i
-                        class="fa-solid fa-bars"
+                        className="fa-solid fa-bars"
                         onClick={() => setToggle(!toggle)}
                     ></i></p>
 
@@ -50,8 +49,8 @@ const Header = (props) => {
                             </div>
                             <div className="user-info" style={{color: 'black'}}>
                                 <span>
-                                    {/* <b>John Wick</b> */}
-                                    <b>{userInfo ? userInfo.name : "John Wick"}</b>
+                                    <b>John Wick</b>
+                                    {/* <b>{userInfo ? userInfo.name : "John Wick"}</b> */}
 
                                     {/* <b>{userData.name}</b> */}
                                 </span>
@@ -60,7 +59,7 @@ const Header = (props) => {
                         </div>
                         <div className="nav-icon" style={{color: 'black'}}>
                             <i
-                                class="fa-solid fa-x col-4"
+                                className="fa-solid fa-x col-4"
                                 onClick={() => setToggle(!toggle)}
                             ></i>
                         </div>
@@ -73,7 +72,7 @@ const Header = (props) => {
                                 setToggle(!toggle)
                             }}>
                             Trang chủ
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <i className="fa-solid fa-chevron-right"></i>
                         </li>
                         <li className="nav-link d-flex justify-content-between"
                             onClick={() => {
@@ -81,7 +80,7 @@ const Header = (props) => {
                                 setToggle(!toggle)
                             }}>
                             Điểm danh
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <i className="fa-solid fa-chevron-right"></i>
                         </li>
                         <li className="nav-link d-flex justify-content-between"
                             onClick={() => {
@@ -89,7 +88,7 @@ const Header = (props) => {
                                 setToggle(!toggle)
                             }}>
                             Bảo trì máy
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <i className="fa-solid fa-chevron-right"></i>
                         </li>
                         <li className="nav-link d-flex justify-content-between"
                             onClick={() => {
@@ -97,7 +96,7 @@ const Header = (props) => {
                                 setToggle(!toggle)
                             }}>
                             Lịch sử điểm danh
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <i className="fa-solid fa-chevron-right"></i>
                         </li>
                         <li className="logout" onClick={handleLogout}>
                             Đăng xuất

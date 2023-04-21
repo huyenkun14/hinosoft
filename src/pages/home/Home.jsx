@@ -1,35 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../../component/header/Header";
 import AttendItem from "../../component/attendItem/AttendItem";
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../../service/AuthProvider";
-import { fetchAttendanceList } from "../../service/apiService";
+import { useContext } from "react";
 import AttendItemTestApi from "../../component/attendItem/AttendItemTestApi";
-export const client = axios.create({
-  baseURL: "https://cors-anywhere.herokuapp.com/https://hinosoft.com/api",
-});
+import UserProvider, { userContext } from "../../store/UserProvider";
 
-const Home = (props) => {
-  const { userInfo } = useContext(AuthContext);
-  console.log(userInfo);
+const Home = () => {
+
+  const navigate = useNavigate()
+  const { userData } = useContext(userContext)
+  const [isSubmit, setIsSubmit] = useState(false)
   const [historyList, setHistoryList] = useState();
-  useEffect(() => {
-    fetchAttendanceList().then((res) => {
-      console.log(res.data.data.results);
-      setHistoryList(res.data.data.results);
-    });
-  }, []);
 
-  return (
+  useEffect(() => {
+    if (localStorage.getItem('token'))
+      setIsSubmit(true)
+  })
+
+  const renderHome = (
     <div className="home">
       <div className="d-flex flex-wrap">
-        <div className="col-12 col-md-8 col-lg-8 col-xl-8">
+        <div className="col-md-1 col-lg-1 col-xl-1"></div>
+        <div className="col-12 col-md-6 col-lg-6 col-xl-6">
           <Header title="Trang chủ" />
         </div>
-        <div className="col-12 col-md-4 col-lg-4 col-xl-4"></div>
+        <div className="col-md-5 col-lg-5 col-xl-5"></div>
       </div>
       <div className="home-inner d-flex flex-wrap">
         <div className="themes home-account col-12 col-md-4 col-lg-4 col-xl-4">
@@ -43,16 +40,15 @@ const Home = (props) => {
             <div className="account-info">
               {/* <h4>John Wick</h4> */}
               {/* <h4>{userInfo.name}</h4> */}
-              <h4>{userInfo ? userInfo.name : "John Wick"}</h4>
+              <h4>{userData ? userData.name : "John Wick"}</h4>
               <p>Lái xe</p>
             </div>
             <div className="account-contact">
               <p>
-                <i class="fa-solid fa-location-dot"></i>&emsp;Quỳnh Phụ, Thái
-                Bình
+                <i className="fa-solid fa-location-dot"></i>&emsp;Quỳnh Phụ, Thái Bình
               </p>
               <p>
-                <i class="fa-solid fa-phone-flip"></i>&emsp;0904 966 113
+                <i className="fa-solid fa-phone-flip"></i>&emsp;0904 966 113
               </p>
             </div>
           </div>
@@ -60,31 +56,35 @@ const Home = (props) => {
 
         <div className="col-md-1 col-lg-1 col-xl-1"></div>
 
-        <div className="col-12 col-md-6 col-lg-6 col-xl-6">
+        <div className="col-12 col-md-6 col-lg-6 col-xl-6 home-attend">
           {historyList ? (
             historyList.map((result, index) => (
-              <div className="home-attend" key={index}>
+              <div key={index}>
                 <AttendItemTestApi history={result} />
               </div>
             ))
           ) : (
             <AttendItem />
           )}
-          <div className="home-attend">
-            <AttendItem />
-          </div>
-          
+
 
           <div className="home-button d-flex justify-content-center">
-            <Link to="scan">
+            <Link to="/scan">
               <button className="btn btn-primary">Quét mã</button>
             </Link>
           </div>
         </div>
-        <div className="col-md-1 col-lg-1 col-xl-1"></div>
       </div>
+      <button onClick={() => console.warn(userData)}></button>
     </div>
-  );
+  )
+
+  return (
+    <div>
+      {isSubmit ? renderHome : navigate('/login')}
+    </div>
+  )
+
 };
 
 export default Home;

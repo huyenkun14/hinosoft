@@ -1,33 +1,82 @@
 import React, { useState } from 'react'
 import './Register.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { fetchRegister } from '../../service/apiService'
+import axiosClient from '../../api/axiosClient'
+import axios from 'axios'
+
 const Register = () => {
-  const [login, setLogin] = useState('')
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPass, setConfirmPass] = useState('')
+
+  const initialState = {
+    fullname: '',
+    username: '',
+    password: '',
+    rePassword: ''
+  }
+
+  const [state, setState] = useState(initialState)
+  const [errMsg, setErrMsg] = useState('')
+
+  const handleInputChange = e => {
+    const { name, value } = e.target
+    setState({ ...state, [name]: value })
+  }
+
+  const handleSumbit = e => {
+    e.preventDefault()
+  }
+
+  const navigate = useNavigate()
   const handleRegister = () => {
-      const navigate = useNavigate()
-      if (login === '' || name === "" || password === "" || confirmPass === "" ) {
-        alert("Hãy điền đủ các thông tin")
+    const username = document.querySelector('#usernameRegister').value
+    const password = document.querySelector('#passwordRegister').value
+
+    if (state.fullname === '' || state.username === "" || state.password === "" || state.rePassword === "") {
+      setErrMsg('Vui lòng điền đầy đủ thông tin!')
+    }
+    else {
+      if (password !== state.rePassword) {
+        setErrMsg("Xác nhận lại mật khẩu!")
       }
       else {
-        if (password !== confirmPass) {
-          alert("Điền lại mật khẩu không chính xác")
-        }
-        else {
-          fetchRegister({login, name, password})
-          .then (res => {
-            if (res.data.success === true) {
-              alert("Đăng kí thành công")
-              navigate("/login")
-            }
-            else {alert("Kiểm tra lại các thông tin")}
+        const fetchRegister = async () => {
+          const url = '/res.users'
+          const bodyData = {
+            name: state.fullname,
+                login: state.username,
+                password
+          }
+          const account = axios.create({
+
           })
+          await account.post(
+            url,
+            {
+              username,
+              password
+            },
+            {
+              body: {
+                name: state.fullname,
+                login: state.username,
+                password
+              }
+            })
+            .then((account) => {
+              console.log(account)
+              navigate('/login')
+              alert('Bạn đã đăng ký thành công. Vui lòng đăng nhập lại.')
+            })
+            .catch((e) => {
+              setErrMsg('Kiểm tra lại thông tin đăng kí!')
+              console.log(e);
+            });
+          console.log(account)
         }
+        fetchRegister()
       }
+    }
   }
+
   return (
     <div className='register d-flex'>
       <div className='col-1 col-sm-2 col-md-3 col-lg-3 col-xl-4'></div>
@@ -36,35 +85,32 @@ const Register = () => {
         <div className="register-logo">
           <img src='http://hinosoft.com/web/image/website/1/logo?unique=262762d' alt='' />
         </div>
+        <p className={`errMsg ${!errMsg ? 'toggle' : ''}`}>* {errMsg}</p>
 
-        <form action="">
+        <form onSubmit={handleSumbit} action="">
           <div className="register-ip d-flex flex-column flex-wrap">
             <div className='register-contact placeholder-contain'>
-              <i class="placeholder-icon fa-solid fa-user"></i>
-              <input className='form-control' type="text" placeholder='Số điện thoại/Email' 
-                value={login}
-                onChange={e => setLogin(e.target.value)}
+              <i className="placeholder-icon fa-solid fa-user"></i>
+              <input className='form-control' type="text" name='username' placeholder='Số điện thoại/Email' id='usernameRegister'
+                onChange={handleInputChange}
               />
             </div>
             <div className='register-name placeholder-contain'>
-              <i class="placeholder-icon fa-solid fa-folder"></i>
-              <input className='form-control' type="text" placeholder='Họ tên' 
-                value={name}
-                onChange={e => setName(e.target.value)}
+              <i className="placeholder-icon fa-solid fa-folder"></i>
+              <input className='form-control' type="text" name='fullname' placeholder='Họ tên'
+                onChange={handleInputChange}
               />
             </div>
             <div className='register-password placeholder-contain'>
-              <i class="placeholder-icon fa-solid fa-lock"></i>
-              <input className='form-control' type="password" placeholder='Mật khẩu' 
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+              <i className="placeholder-icon fa-solid fa-lock"></i>
+              <input className='form-control' type="password" name='password' placeholder='Mật khẩu' id='passwordRegister'
+                onChange={handleInputChange}
               />
             </div>
             <div className='register-confirm placeholder-contain'>
-              <i class="placeholder-icon fa-regular fa-circle-check"></i>
-              <input className='form-control' type="password" placeholder='Xác nhận mật khẩu'
-                value={confirmPass}
-                onChange={e => setConfirmPass(e.target.value)}             
+              <i className="placeholder-icon fa-regular fa-circle-check"></i>
+              <input className='form-control' type="password" name='rePassword' placeholder='Xác nhận mật khẩu'
+                onChange={handleInputChange}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
-import AttendItem from "../../component/attendItem/AttendItem";
+// import AttendItem from "../../component/attendItem/AttendItem";
 import Header from "../../component/header/Header";
-import "./Attendance-detail.css";
+import "./AttendanceDetail.css";
 import React from "react";
 import AttendItemTestApi from "../../component/attendItem/AttendItemTestApi";
 import { useLocation } from "react-router-dom";

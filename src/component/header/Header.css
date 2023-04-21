@@ -96,9 +96,16 @@
     display: none;
 }
 
+
 @media screen and (min-width: 576px) {
     .navbar {
         width: 50vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        margin-bottom: 0;
     }
 }
 

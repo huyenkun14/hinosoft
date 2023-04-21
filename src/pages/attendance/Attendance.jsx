@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Attendance = () => {
 
   const [date, setDate] = useState(new Date())
