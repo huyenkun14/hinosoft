@@ -6,19 +6,22 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 // import { AuthContext } from "../../service/AuthProvider";
 import AttendItemTestApi from '../../component/attendItem/AttendItemTestApi'
-
+import { fetchAttendanceList } from '../../service/apiService'
 const History = () => {
 
     // const {userInfo} = useContext(AuthContext)
     const navigate = useNavigate();
     const [historyList, setHistoryList] = useState()
-    // useEffect(() => {
-    //     fetchAttendanceList()
-    //     .then(res => {
-    //         console.log(res.data.data.results)
-    //         setHistoryList(res.data.data.results)
-    //     })
-    // },[])
+    const onFetchAttendanceList = async () => {
+        await fetchAttendanceList()
+        .then(res => {
+            console.log(res.data.data.results)
+            setHistoryList(res.data.data.results)
+        })
+    }
+    useEffect(() => {
+        onFetchAttendanceList()
+    },[])
     const GotoDetail = (detail) => {
         navigate("/attendance_detail", {state: {detail}})
     }

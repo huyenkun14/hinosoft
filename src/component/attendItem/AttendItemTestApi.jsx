@@ -11,14 +11,14 @@ const AttendItemTestApi = (props) => {
   return (
     <div className='attendItem d-flex justify-content-around'>
 
-        <div className='attend-type'>
+        <div className='attend-type col-4'>
           <p ><b>{history ? history.equipment_id.name : "Xe lu 10 tấn"}</b></p>
           <div className='type-img'>
             <img src='https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/address-icon.png' alt='' />
           </div>
         </div>
 
-        <div className='attend-start'>
+        <div className='attend-start col-4'>
           <p className='attend-title'>Bắt đầu</p>
           {
             isStart ? <div className='done'>
@@ -46,7 +46,7 @@ const AttendItemTestApi = (props) => {
           <i className="fa-solid fa-arrow-right"></i>
         </div>
 
-        <div className='attend-end'>
+        <div className='attend-end col-4'>
           <p className='attend-title'>Kết thúc</p>
           {
             isFinish ? <div className='done'>
