@@ -16,9 +16,10 @@ import Guide from './pages/guide/Guide'
 import QR from './pages/scanQR/QR';
 import Reason from './pages/reason/Reason'
 import PageNotFound from './pages/pageNotFound/PageNotFound';
-
+import UserProvider from './store/UserProvider'
 function App() {
   return (
+    <UserProvider>
     <div className='app'>
       <div className='cover-bg'></div>
       <BrowserRouter>
@@ -40,6 +41,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
+    </UserProvider>
   );
 }
 

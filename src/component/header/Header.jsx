@@ -1,17 +1,19 @@
 import "./Header.css";
 import { useNavigate, Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import { removeUserlocal } from "../../cookies/localStorage";
-
+import { userContext } from "../../store/UserProvider";
+import { fetchUserInfo } from "../../service/apiService";
 const Header = (props) => {
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate()
-
-
+    const {userData, login} = useContext(userContext)
+    console.log(userData)
     const handleLogout = () => {
         localStorage.clear()
         navigate("/login")
     }
+    
     return (
         <div className="header">
             <div className="d-flex justify-content-evenly header-title align-items-center">
@@ -49,8 +51,8 @@ const Header = (props) => {
                             </div>
                             <div className="user-info" style={{color: 'black'}}>
                                 <span>
-                                    <b>John Wick</b>
-                                    {/* <b>{userInfo ? userInfo.name : "John Wick"}</b> */}
+                                    {/* <b>John Wick</b> */}
+                                    <b>{userData ? userData.name : "John Wick"}</b>
 
                                     {/* <b>{userData.name}</b> */}
                                 </span>

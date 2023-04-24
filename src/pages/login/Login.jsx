@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './Login.css'
 import { useNavigate, Link } from 'react-router-dom'
 import axiosClient from '../../api/axiosClient'
+import { userContext } from '../../store/UserProvider'
 
 const Login = () => {
-
+  const {login} = useContext(userContext)
   const navigate = useNavigate()
 
   const initialState = {
@@ -27,32 +28,34 @@ const Login = () => {
   }
 
   const handleLogin = () => {
-    const username = document.querySelector('#usernameLogin').value
-    const password = document.querySelector('#passwordLogin').value
-    console.warn(state)
-    const fetchAccounts = async () => {
-      try {
-        const url = '/auth/get_tokens'
-        const account = await axiosClient.get(url, {
-          params: {
-            username,
-            password,
-            access_lifetime: 7200,
-            refresh_lifetime: 7200
-          }
-        })
-        console.log(account)
-        localStorage.setItem('token', JSON.stringify(account.data.access_token))
-        navigate('/home')
-      } catch (e) {
-        if (e) {
-          setErrMsg('Kiểm tra lại thông tin đăng nhập!')
-        } else {
-          setErrMsg('Login failed!')
-        }
-      }
-    }
-    fetchAccounts()
+    // const username = document.querySelector('#usernameLogin').value
+    // const password = document.querySelector('#passwordLogin').value
+    // console.warn(state)
+    // const fetchAccounts = async () => {
+    //   try {
+    //     const url = '/auth/get_tokens'
+    //     const account = await axiosClient.get(url, {
+    //       params: {
+    //         username,
+    //         password,
+    //         access_lifetime: 7200,
+    //         refresh_lifetime: 7200
+    //       }
+    //     })
+    //     console.log(account)
+    //     localStorage.setItem('token', JSON.stringify(account.data.access_token))
+    //     navigate('/home')
+    //   } catch (e) {
+    //     if (e) {
+    //       setErrMsg('Kiểm tra lại thông tin đăng nhập!')
+    //     } else {
+    //       setErrMsg('Login failed!')
+    //     }
+    //   }
+    // }
+    // fetchAccounts()
+    login()
+    navigate("/home")
   }
 
   useEffect(() => {
