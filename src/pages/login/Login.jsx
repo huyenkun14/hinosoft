@@ -5,7 +5,9 @@ import axiosClient from '../../api/axiosClient'
 import { userContext } from '../../store/UserProvider'
 
 const Login = () => {
+
   const { login } = useContext(userContext)
+
   const navigate = useNavigate()
 
   const initialState = {
@@ -54,6 +56,7 @@ const Login = () => {
     //   }
     // }
     // fetchAccounts()
+
     try {
 
       login()

@@ -48,7 +48,7 @@
 .input-image {
     display: inline;
     position: relative;
-    /* margin: 0 10px; */
+    margin: 10px;
     top: 0;
 }
 
