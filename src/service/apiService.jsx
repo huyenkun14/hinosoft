@@ -19,6 +19,7 @@ export const fetchAccounts = async () => {
     console.log(account);
     localStorage.setItem("token", account.data.access_token);
 };
+
 // export const fetchUserInfo = () => {
 //   let accessToken = localStorage.getItem("token");
 //   console.log(accessToken);

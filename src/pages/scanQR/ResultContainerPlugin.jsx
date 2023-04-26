@@ -17,38 +17,36 @@ function filterResults(results) {
 }
 
 const ResultContainerTable = ({ data }) => {
+    const navigate = useNavigate()
     const results = filterResults(data);
     return (
         <div className={'Qrcode-result'}>
-                {
-                    results.map((result, i) => {
-                        console.log(result);
-                        return (<div key={i}>
-                            <p>{result.decodedText}</p>
-                        </div>);
-                    })
-                }
+            {
+                results.map((result, i) => {
+                    console.log(result);
+                    return (<div key={i}>
+                        <p>{result.decodedText}</p>
+                        <div className='Result-button mt-3'>
+                            <button className='btn btn-primary'
+                                onClick={() => navigate('/attendance')}
+                            >Điểm danh</button>
+                            <button className='btn btn-secondary'
+                                onClick={() => navigate('/maintenance')}
+                            >bảo trì</button>
+                        </div>
+                    </div>);
+                })
+            }
         </div>
     );
 };
 
 const ResultContainerPlugin = (props) => {
-
-    const navigate = useNavigate()
-
     const results = filterResults(props.results);
     return (
         <div className='Result-container'>
             <div className='Result-section'>
                 <ResultContainerTable data={results} />
-            </div>
-            <div className='Result-button mt-3'>
-                <button className='btn btn-primary'
-                onClick={() => navigate('/attendance')}
-                >Điểm danh</button>
-                <button className='btn btn-secondary'
-                onClick={() => navigate('/maintenance')}
-                >bảo trì</button>
             </div>
         </div>
     );

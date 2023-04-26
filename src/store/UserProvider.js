@@ -1,7 +1,8 @@
 import React, { createContext, useEffect, useState, useRef } from "react";
 import axiosClient from "../api/axiosClient";
 import axios from "axios";
-import {fetchAccounts,  } from "../service/apiService";
+
+import { fetchAccounts } from "../service/apiService";
 // import { useNavigate } from "react-router-dom";
 export const userContext = createContext({})
 
