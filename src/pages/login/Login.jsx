@@ -5,7 +5,7 @@ import axiosClient from '../../api/axiosClient'
 import { userContext } from '../../store/UserProvider'
 
 const Login = () => {
-  const {login} = useContext(userContext)
+  const { login } = useContext(userContext)
   const navigate = useNavigate()
 
   const initialState = {
@@ -54,8 +54,17 @@ const Login = () => {
     //   }
     // }
     // fetchAccounts()
-    login()
-    navigate("/home")
+    try {
+
+      login()
+      navigate("/home")
+    } catch (e) {
+      if (e) {
+        setErrMsg('Kiểm tra lại thông tin đăng nhập!')
+      } else {
+        setErrMsg('Login failed!')
+      }
+    }
   }
 
   useEffect(() => {
