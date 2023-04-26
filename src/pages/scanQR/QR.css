@@ -1,0 +1,96 @@
+.QR {
+  text-align: center;
+  margin: 0 -10px;
+}
+
+.QR-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .QR-logo {
+    animation: QR-logo-spin infinite 20s linear;
+  }
+}
+
+.QR-section {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px 0;
+}
+
+.QR-section-title {
+  font-size: calc(10px + 2vmin);
+}
+
+.QR-section-title i {
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.QR-link {
+  color: #61dafb;
+}
+
+.QR-button button {
+  margin: 10px;
+}
+
+.QR-section button {
+  min-width: 120px;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+@keyframes QR-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#html5qr-code-full-region {
+  background-color: #adb5bd;
+  color: #282c34;
+  font-size: 12pt;
+}
+
+
+@media(max-width: 640px) {
+
+  #html5qr-code-full-region,
+  .QR-section-title {
+    width: 300px;
+  }
+}
+
+@media(min-width: 640px) {
+
+  #html5qr-code-full-region,
+  .QR-section-title {
+    width: 600px;
+  }
+}
+
+.Result-container {
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.Result-button button {
+  margin: 5px;
+}
+
+.QR a {
+  color: white
+}

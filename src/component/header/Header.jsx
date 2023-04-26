@@ -1,36 +1,44 @@
 import "./Header.css";
-import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../../pages/login/Login";
+import { useNavigate, Link } from "react-router-dom";
+import React, { useState,useContext, useEffect } from "react";
+import { removeUserlocal } from "../../cookies/localStorage";
+import { userContext } from "../../store/UserProvider";
+import { fetchUserInfo } from "../../service/apiService";
 const Header = (props) => {
-    // const userData = useContext(UserContext)
     const [toggle, setToggle] = useState(false);
+    const navigate = useNavigate()
+    const {userData, login} = useContext(userContext)
+    console.log(userData)
+    const handleLogout = () => {
+        localStorage.clear()
+        navigate("/login")
+    }
+    
     return (
-        <div className="header bg-primary">
+        <div className="header">
             <div className="d-flex justify-content-evenly header-title align-items-center">
-                <div className="col-4">
-                    <p>
-                        <i
-                            class="fa-solid fa-bars"
-                            onClick={() => setToggle(!toggle)}
-                        ></i>
-                    </p>
+                <div className="col-2">
+                    <p><i
+                        className="fa-solid fa-bars"
+                        onClick={() => setToggle(!toggle)}
+                    ></i></p>
+
                 </div>
-                <div className="col-4 d-flex align-items-center">
+                <div className="col-8">
                     <p>{props.title}</p>
                 </div>
-                <div className="col-4">
+                <div className="col-2">
                     <div className="header-avt mx-auto">
                         <img
                             src="https://img.lovepik.com/free-png/20211204/lovepik-cartoon-avatar-png-image_401302777_wh1200.png"
                             alt=""
+                            onClick={() => navigate('/')}
                         />
                     </div>
                 </div>
             </div>
-            <div className={toggle ? toggle : "toggle"}>
-                <div className="navbar">
+            <div className={`navbar-contain ${toggle ? toggle : "toggle"}`}>
+                <div className='navbar'>
                     <div className="nav-header d-flex justify-content-between">
                         <div className="d-flex">
                             <div className="user-img">
@@ -41,42 +49,60 @@ const Header = (props) => {
                                     />
                                 </Link>
                             </div>
-                            <div className="user-info">
+                            <div className="user-info" style={{color: 'black'}}>
                                 <span>
-                                    <b>John Wick</b>
+                                    {/* <b>John Wick</b> */}
+                                    <b>{userData ? userData.name : "John Wick"}</b>
+
                                     {/* <b>{userData.name}</b> */}
                                 </span>
                                 <p>Lái xe</p>
                             </div>
                         </div>
-                        <div className="nav-icon">
+                        <div className="nav-icon" style={{color: 'black'}}>
                             <i
-                                class="fa-solid fa-bars col-4"
+                                className="fa-solid fa-x col-4"
                                 onClick={() => setToggle(!toggle)}
                             ></i>
                         </div>
                     </div>
 
                     <ul className="nav-items">
-                        <Link to="/attendance">
-                            <li className="nav-link d-flex justify-content-between">
-                                Điểm danh
-                                <i class="fa-regular fa-right-to-bracket"></i>
-                            </li>
-                        </Link>
-                        <Link to="/maintenance">
-                            <li className="nav-link d-flex justify-content-between">
-                                Bảo trì máy
-                                <i class="fa-regular fa-right-to-bracket"></i>
-                            </li>
-                        </Link>
-                        <Link to="/attendance_history">
-                            <li className="nav-link d-flex justify-content-between">
-                                Lịch sử điểm danh
-                                <i class="fa-regular fa-right-to-bracket"></i>
-                            </li>
-                        </Link>
-                        <li className="logout">Đăng xuất</li>
+                        <li className="nav-link d-flex justify-content-between"
+                            onClick={() => {
+                                navigate('/')
+                                setToggle(!toggle)
+                            }}>
+                            Trang chủ
+                            <i className="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li className="nav-link d-flex justify-content-between"
+                            onClick={() => {
+                                navigate('/attendance')
+                                setToggle(!toggle)
+                            }}>
+                            Điểm danh
+                            <i className="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li className="nav-link d-flex justify-content-between"
+                            onClick={() => {
+                                navigate('/maintenance')
+                                setToggle(!toggle)
+                            }}>
+                            Bảo trì máy
+                            <i className="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li className="nav-link d-flex justify-content-between"
+                            onClick={() => {
+                                navigate('/attendance_history')
+                                setToggle(!toggle)
+                            }}>
+                            Lịch sử điểm danh
+                            <i className="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li className="logout" onClick={handleLogout}>
+                            Đăng xuất
+                        </li>
                     </ul>
                 </div>
             </div>
